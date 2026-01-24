@@ -1,6 +1,11 @@
 # n8n OpenAI Image Generator
-- Simple n8n workflow for generating images with OpenAI based on user prompts
-- n8n을 이용해 이미지를 생성해주는 workflow를 구축합니다.
+### ko_KR
+- 사용자 프롬프트 & OpenAI 기반 이미지 생성 n8n 워크플로우
+- ⚠️ OpenAI API key 발급이 필요합니다.
+
+### en_US
+- n8n workflow for generating images with OpenAI based on user prompts
+- ⚠️ OpenAI API key is required
 
 ## Tech Stack
 - Node.js(Self-hosting)
