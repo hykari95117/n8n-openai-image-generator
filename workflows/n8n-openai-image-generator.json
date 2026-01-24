@@ -4,21 +4,21 @@
     {
       "parameters": {
         "resource": "image",
-        "prompt": "={{ $json.Pormpt }}\nanime-style illustration, Japanese animation style,\nclean line art, soft shading,\nlarge expressive eyes,\ncinematic lighting, dreamy atmosphere,\nhigh quality, ultra-detailed, 4k,\nillustrated, 2D animation style, not realistic",
+        "prompt": "={{ $json.Pormpt }}\nanime-style illustration, Japanese animation style,\nclean line art, soft shading,\nlarge expressive eyes,\ncinematic lighting, dreamy atmosphere,\nhigh quality, ultra-detailed, 4k,\nillustrated, 2D animation style, not realistic\n\nNOT 3D, NOT CGI, NOT 3D render,\nno 3D modeling, no depth-heavy lighting,\nno photorealism, no realistic textures,\nno blender style, no unreal engine style",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.1,
       "position": [
-        16,
+        48,
         -64
       ],
       "id": "ab3618b8-6431-496c-b8e8-3cb7ed84626c",
       "name": "Generate an image",
       "credentials": {
         "openAiApi": {
-          "id": "VIvcOU2Y3TBffJKp",
-          "name": "OpenAi account 2"
+          "id": "64pR9zIwaxub96pl",
+          "name": "OpenAi account"
         }
       }
     },
@@ -52,18 +52,34 @@
     },
     {
       "parameters": {
-        "content": "A pretty girl playing with a puppy",
-        "height": 80,
-        "width": 256
+        "content": "- A pretty girl playing with a puppy\n- Three girls are embarrassed by the wind\n- A girl in a bunny girl outfit with a hammer and a chainsaw\n- A girl dressed as Made stealing her wallet and running away",
+        "height": 256,
+        "width": 496
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -272,
-        -240
+        -256,
+        -352
       ],
       "typeVersion": 1,
       "id": "c0b8558f-c16c-4ba4-bb4d-a5faa4ac6898",
       "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "NODE\n- Read/Write Files from Disk",
+        "height": 96,
+        "width": 368,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        256,
+        -352
+      ],
+      "typeVersion": 1,
+      "id": "8e8f8397-7244-47f5-8b58-af26c68cf1e9",
+      "name": "Sticky Note1"
     }
   ],
   "pinData": {},
@@ -90,7 +106,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "66458584-57b6-43ca-a926-84a772fd750c",
+  "versionId": "e5f67c48-1bba-408a-ae23-df81a88eb6be",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "dcbf05de79cd320873e73cfbd22da1610518929336af02084cb7d8a96f6c351f"
