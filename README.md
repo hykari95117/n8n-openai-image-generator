@@ -1,9 +1,11 @@
-# n8n-openai-image-generator
+# n8n OpenAI Image Generator
+- Simple n8n workflow for generating images with OpenAI based on user prompts
 - n8n을 이용해 이미지를 생성해주는 workflow를 구축합니다.
 
 ## Tech Stack
 - n8n
-- OpenAI
+- Node.js(Self-hosting)
+- OpenAI API
 
 ## workflow
 ```
