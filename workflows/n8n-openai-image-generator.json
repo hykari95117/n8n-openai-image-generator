@@ -1,0 +1,100 @@
+{
+  "name": "n8n-openai-image-generator",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "image",
+        "prompt": "={{ $json.Pormpt }}\nanime-style illustration, Japanese animation style,\nclean line art, soft shading,\nlarge expressive eyes,\ncinematic lighting, dreamy atmosphere,\nhigh quality, ultra-detailed, 4k,\nillustrated, 2D animation style, not realistic",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        16,
+        -64
+      ],
+      "id": "ab3618b8-6431-496c-b8e8-3cb7ed84626c",
+      "name": "Generate an image",
+      "credentials": {
+        "openAiApi": {
+          "id": "VIvcOU2Y3TBffJKp",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "Image Generation",
+        "formDescription": "This form will allow you to generate images",
+        "formFields": {
+          "values": [
+            {
+              "fieldName": "Pormpt",
+              "fieldLabel": "input your image idea",
+              "fieldType": "textarea",
+              "placeholder": "input your image idea",
+              "defaultValue": "input your image idea",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.4,
+      "position": [
+        -176,
+        -64
+      ],
+      "id": "c592d38e-1b4a-474d-b4c1-c126df6c8f7c",
+      "name": "On form submission",
+      "webhookId": "19e745f8-03d7-4e12-958a-bc02e56d5b4c"
+    },
+    {
+      "parameters": {
+        "content": "A pretty girl playing with a puppy",
+        "height": 80,
+        "width": 256
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -272,
+        -240
+      ],
+      "typeVersion": 1,
+      "id": "c0b8558f-c16c-4ba4-bb4d-a5faa4ac6898",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Generate an image": {
+      "main": [
+        []
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Generate an image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "66458584-57b6-43ca-a926-84a772fd750c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dcbf05de79cd320873e73cfbd22da1610518929336af02084cb7d8a96f6c351f"
+  },
+  "id": "P14MpCcGq4OPLrLwT5R1q",
+  "tags": []
+}
