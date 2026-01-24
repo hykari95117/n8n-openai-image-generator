@@ -16,7 +16,7 @@
 - [무료 AI 이미지 생성 N8n 자동화](https://youtu.be/x2ZCpBv3mK8)
 
 ## TODO
-- [ ] 생성된 이미지를 파일로 저장
+- [ ] 생성된 이미지를 파일 혹은 Google Drive에 저장
 - [ ] OpenAI 외 다른 플랫폼 연결도 가능하게
 
 <!-- 
