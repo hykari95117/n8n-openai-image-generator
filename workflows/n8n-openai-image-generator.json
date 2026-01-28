@@ -3,6 +3,64 @@
   "nodes": [
     {
       "parameters": {
+        "formTitle": "Image Generation",
+        "formDescription": "This form will allow you to generate images",
+        "formFields": {
+          "values": [
+            {
+              "fieldName": "Pormpt",
+              "fieldLabel": "input your image idea",
+              "fieldType": "textarea",
+              "placeholder": "input your image idea",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.4,
+      "position": [
+        -144,
+        -64
+      ],
+      "id": "c592d38e-1b4a-474d-b4c1-c126df6c8f7c",
+      "name": "On form submission",
+      "webhookId": "19e745f8-03d7-4e12-958a-bc02e56d5b4c"
+    },
+    {
+      "parameters": {
+        "content": "- A pretty girl playing with a puppy\n- Three girls are embarrassed by the wind\n- A girl in a bunny girl outfit with a hammer and a chainsaw\n- A girl dressed as Made stealing her wallet and running away\n- A beautiful beautiful woman extort money with a katana",
+        "height": 256,
+        "width": 496
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -304,
+        -512
+      ],
+      "typeVersion": 1,
+      "id": "c0b8558f-c16c-4ba4-bb4d-a5faa4ac6898",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "NODE\n- Read/Write Files from Disk",
+        "height": 96,
+        "width": 368,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        240,
+        -512
+      ],
+      "typeVersion": 1,
+      "id": "8e8f8397-7244-47f5-8b58-af26c68cf1e9",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
         "resource": "image",
         "prompt": "={{ $json.Pormpt }}\nanime-style illustration, Japanese animation style,\nclean line art, soft shading,\nlarge expressive eyes,\ncinematic lighting, dreamy atmosphere,\nhigh quality, ultra-detailed, 4k,\nillustrated, 2D animation style, not realistic\n\nNOT 3D, NOT CGI, NOT 3D render,\nno 3D modeling, no depth-heavy lighting,\nno photorealism, no realistic textures,\nno blender style, no unreal engine style",
         "options": {}
@@ -24,6 +82,33 @@
     },
     {
       "parameters": {
+        "resource": "video",
+        "modelId": {
+          "__rl": true,
+          "value": "sora-2",
+          "mode": "list",
+          "cachedResultName": "SORA-2"
+        },
+        "prompt": "=A beautiful beautiful woman extort money with a katana",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        -64
+      ],
+      "id": "cfcbed53-6837-4675-b585-39dcd22302bf",
+      "name": "Generate a video",
+      "credentials": {
+        "openAiApi": {
+          "id": "64pR9zIwaxub96pl",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
         "formTitle": "Image Generation",
         "formDescription": "This form will allow you to generate images",
         "formFields": {
@@ -33,7 +118,6 @@
               "fieldLabel": "input your image idea",
               "fieldType": "textarea",
               "placeholder": "input your image idea",
-              "defaultValue": "input your image idea",
               "requiredField": true
             }
           ]
@@ -43,57 +127,140 @@
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.4,
       "position": [
-        -176,
-        -64
+        -144,
+        240
       ],
-      "id": "c592d38e-1b4a-474d-b4c1-c126df6c8f7c",
-      "name": "On form submission",
-      "webhookId": "19e745f8-03d7-4e12-958a-bc02e56d5b4c"
+      "id": "a2996b89-f240-44ba-be01-537d0cabaf8d",
+      "name": "On form submission1",
+      "webhookId": "416c3749-5880-45ca-b428-a3d11c8412e4"
     },
     {
       "parameters": {
-        "content": "- A pretty girl playing with a puppy\n- Three girls are embarrassed by the wind\n- A girl in a bunny girl outfit with a hammer and a chainsaw\n- A girl dressed as Made stealing her wallet and running away",
-        "height": 256,
-        "width": 496
+        "resource": "video",
+        "modelId": {
+          "__rl": true,
+          "value": "models/veo-2.0-generate-001",
+          "mode": "list",
+          "cachedResultName": "models/veo-2.0-generate-001"
+        },
+        "prompt": "=make video about this image  {{ $json.id }}",
+        "options": {}
       },
-      "type": "n8n-nodes-base.stickyNote",
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
       "position": [
-        -256,
-        -352
+        240,
+        240
       ],
-      "typeVersion": 1,
-      "id": "c0b8558f-c16c-4ba4-bb4d-a5faa4ac6898",
-      "name": "Sticky Note"
+      "id": "61179b63-62b2-4ff0-8873-4ff2e142d658",
+      "name": "Generate a video2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "QC8KfYPj6fr6hZUm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
     },
     {
       "parameters": {
-        "content": "NODE\n- Read/Write Files from Disk",
-        "height": 96,
+        "resource": "image",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.0-flash-exp-image-generation",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.0-flash-exp-image-generation"
+        },
+        "prompt": "={{ $json.Pormpt }}\nanime-style illustration, Japanese animation style,\nclean line art, soft shading,\nlarge expressive eyes,\ncinematic lighting, dreamy atmosphere,\nhigh quality, ultra-detailed, 4k,\nillustrated, 2D animation style, not realistic\n\nNOT 3D, NOT CGI, NOT 3D render,\nno 3D modeling, no depth-heavy lighting,\nno photorealism, no realistic textures,\nno blender style, no unreal engine style",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        48,
+        240
+      ],
+      "id": "d501e50c-042e-4796-a799-a9adb5fb3c0b",
+      "name": "Generate an image1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "QC8KfYPj6fr6hZUm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "[26.01.28]\n아직 주어진 이미지 기반 영상 생성 노드는 지원되지 않는듯",
+        "height": 80,
         "width": 368,
-        "color": 6
+        "color": 4
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        256,
-        -352
+        48,
+        -176
       ],
       "typeVersion": 1,
-      "id": "8e8f8397-7244-47f5-8b58-af26c68cf1e9",
-      "name": "Sticky Note1"
+      "id": "e1603cc5-f331-41b7-bdc2-3655aad96b98",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "Google AI Studio 결재하면 아래 노드도 만들어보기",
+        "height": 80,
+        "width": 368,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        48,
+        144
+      ],
+      "typeVersion": 1,
+      "id": "f05e4f33-3bc9-4110-a643-2569bd224ef4",
+      "name": "Sticky Note3"
     }
   ],
   "pinData": {},
   "connections": {
-    "Generate an image": {
-      "main": [
-        []
-      ]
-    },
     "On form submission": {
       "main": [
         [
           {
             "node": "Generate an image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate an image": {
+      "main": [
+        [
+          {
+            "node": "Generate a video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission1": {
+      "main": [
+        [
+          {
+            "node": "Generate an image1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate an image1": {
+      "main": [
+        [
+          {
+            "node": "Generate a video2",
             "type": "main",
             "index": 0
           }
@@ -106,7 +273,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "e5f67c48-1bba-408a-ae23-df81a88eb6be",
+  "versionId": "5f89f770-5737-4d3a-9a77-5f038afcd6d0",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "dcbf05de79cd320873e73cfbd22da1610518929336af02084cb7d8a96f6c351f"
