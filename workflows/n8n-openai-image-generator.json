@@ -21,7 +21,7 @@
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.4,
       "position": [
-        -144,
+        -160,
         -64
       ],
       "id": "c592d38e-1b4a-474d-b4c1-c126df6c8f7c",
@@ -68,7 +68,7 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.1,
       "position": [
-        48,
+        64,
         -64
       ],
       "id": "ab3618b8-6431-496c-b8e8-3cb7ed84626c",
@@ -95,8 +95,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.1,
       "position": [
-        240,
-        -64
+        288,
+        -48
       ],
       "id": "cfcbed53-6837-4675-b585-39dcd22302bf",
       "name": "Generate a video",
@@ -128,7 +128,7 @@
       "typeVersion": 2.4,
       "position": [
         -144,
-        240
+        416
       ],
       "id": "a2996b89-f240-44ba-be01-537d0cabaf8d",
       "name": "On form submission1",
@@ -150,7 +150,7 @@
       "typeVersion": 1.1,
       "position": [
         240,
-        240
+        416
       ],
       "id": "61179b63-62b2-4ff0-8873-4ff2e142d658",
       "name": "Generate a video2",
@@ -177,7 +177,7 @@
       "typeVersion": 1.1,
       "position": [
         48,
-        240
+        416
       ],
       "id": "d501e50c-042e-4796-a799-a9adb5fb3c0b",
       "name": "Generate an image1",
@@ -213,12 +213,89 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        48,
-        144
+        -32,
+        304
       ],
       "typeVersion": 1,
       "id": "f05e4f33-3bc9-4110-a643-2569bd224ef4",
       "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "model": "gemma2:2b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        720,
+        240
+      ],
+      "id": "783745d6-a06d-4734-892b-6f9704b6433d",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "FhRzGMwpasr3Mg2V",
+          "name": "Ollama account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        736,
+        0
+      ],
+      "id": "5f43d03e-4529-46be-b86f-6e3b290321b9",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        528,
+        -16
+      ],
+      "id": "9fa92b3b-3fb0-42e4-8ee5-d75e13d0b1be",
+      "name": "When chat message received",
+      "webhookId": "dd58a2de-459e-4fd7-bb04-266fde29ba2b"
+    },
+    {
+      "parameters": {
+        "content": "[현재 ollama 실행중인지 확인]\ncurl http://localhost:11434/api/tags\n\n#### 1. [Ollama가 실제로 11434 포트로 실행되고 있는지 확인]\nnetstat -ano | findstr :11434\n- 아래 내용 같은게 나오지 않으면 실행되고 있는게 아님\nTCP    127.0.0.1:11434        0.0.0.0:0              LISTENING       12032\n- 그럴 때는 아래 순으로 작업해보자\n\n#### 2. [관리자 권한으로 powershell 실행 후 ollama 관련 프로그램 다 끄기]\n- taskkill /F /IM ollama.exe\n- taskkill /F /IM ollama_llama_server.exe\n- cf) 작업 관리자 창에서 ollama 들어간 애들 다 작업 끝내기 해도 됨\n\n#### 3. [ollama (다시) 시작]\n- ollama serve\n- 그 후 다시 netstat -ano | findstr :11434 명령어를 실행해 정상적인 값이 나오는지 확인",
+        "height": 416,
+        "width": 784
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1152,
+        -64
+      ],
+      "typeVersion": 1,
+      "id": "dd76ad2d-91d1-4434-aea1-7d032ee98bff",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## 이게 핵심인 듯\n- Credentials 생성시 Base URL을 AS-IS에서 TO-BE로 바꾸니까 연결 성공\nAS-IS : http://localhost:11434\nTO-BE : http://127.0.0.1:11434\n\n- 참고로 API Key는 필요없으므로 비워둬도 된다.(필수 표시는 무시)",
+        "width": 576,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1152,
+        368
+      ],
+      "typeVersion": 1,
+      "id": "a06cacbf-be7d-4bb3-a790-7f320b7bdf87",
+      "name": "Sticky Note5"
     }
   ],
   "pinData": {},
@@ -236,13 +313,7 @@
     },
     "Generate an image": {
       "main": [
-        [
-          {
-            "node": "Generate a video",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "On form submission1": {
@@ -266,6 +337,28 @@
           }
         ]
       ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -273,7 +366,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "5f89f770-5737-4d3a-9a77-5f038afcd6d0",
+  "versionId": "d3346cf7-dd13-4c0c-b9d2-ab98ce66d7d3",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "dcbf05de79cd320873e73cfbd22da1610518929336af02084cb7d8a96f6c351f"
