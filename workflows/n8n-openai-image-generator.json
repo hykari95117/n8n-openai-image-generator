@@ -16,7 +16,9 @@
             }
           ]
         },
-        "options": {}
+        "options": {
+          "customCss": ":root {\n\t--font-family: 'Open Sans', sans-serif;\n\t--font-weight-normal: 400;\n\t--font-weight-bold: 600;\n\t--font-size-body: 12px;\n\t--font-size-label: 14px;\n\t--font-size-test-notice: 12px;\n\t--font-size-input: 14px;\n\t--font-size-header: 20px;\n\t--font-size-paragraph: 14px;\n\t--font-size-link: 12px;\n\t--font-size-error: 12px;\n\t--font-size-html-h1: 28px;\n\t--font-size-html-h2: 20px;\n\t--font-size-html-h3: 16px;\n\t--font-size-html-h4: 14px;\n\t--font-size-html-h5: 12px;\n\t--font-size-html-h6: 10px;\n\t--font-size-subheader: 14px;\n\n\t/* Colors */\n\t--color-background: #fbfcfe;\n\t--color-test-notice-text: #e6a23d;\n\t--color-test-notice-bg: #fefaf6;\n\t--color-test-notice-border: #f6dcb7;\n\t--color-card-bg: #ffffff;\n\t--color-card-border: #dbdfe7;\n\t--color-card-shadow: rgba(99, 77, 255, 0.06);\n\t--color-link: #7e8186;\n\t--color-header: #525356;\n\t--color-label: #555555;\n\t--color-input-border: #dbdfe7;\n\t--color-input-text: #71747A;\n\t--color-focus-border: rgb(90, 76, 194);\n\t--color-submit-btn-bg: #ff6d5a;\n\t--color-submit-btn-text: #ffffff;\n\t--color-error: #ea1f30;\n\t--color-required: #ff6d5a;\n\t--color-clear-button-bg: #7e8186;\n\t--color-html-text: #555;\n\t--color-html-link: #ff6d5a;\n\t--color-header-subtext: #7e8186;\n\n\t/* Border Radii */\n\t--border-radius-card: 8px;\n\t--border-radius-input: 6px;\n\t--border-radius-clear-btn: 50%;\n\t--card-border-radius: 8px;\n\n\t/* Spacing */\n\t--padding-container-top: 24px;\n\t--padding-card: 24px;\n\t--padding-test-notice-vertical: 12px;\n\t--padding-test-notice-horizontal: 24px;\n\t--margin-bottom-card: 16px;\n\t--padding-form-input: 12px;\n\t--card-padding: 24px;\n\t--card-margin-bottom: 16px;\n\n\t/* Dimensions */\n\t--container-width: 448px;\n\t--submit-btn-height: 48px;\n\t--checkbox-size: 18px;\n\n\t/* Others */\n\t--box-shadow-card: 0px 4px 16px 0px var(--color-card-shadow);\n\t--opacity-placeholder: 0.5;\n}"
+        }
       },
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.4,
@@ -95,8 +97,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.1,
       "position": [
-        288,
-        -48
+        448,
+        -192
       ],
       "id": "cfcbed53-6837-4675-b585-39dcd22302bf",
       "name": "Generate a video",
@@ -104,87 +106,6 @@
         "openAiApi": {
           "id": "64pR9zIwaxub96pl",
           "name": "OpenAi account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "formTitle": "Image Generation",
-        "formDescription": "This form will allow you to generate images",
-        "formFields": {
-          "values": [
-            {
-              "fieldName": "Pormpt",
-              "fieldLabel": "input your image idea",
-              "fieldType": "textarea",
-              "placeholder": "input your image idea",
-              "requiredField": true
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.formTrigger",
-      "typeVersion": 2.4,
-      "position": [
-        -144,
-        416
-      ],
-      "id": "a2996b89-f240-44ba-be01-537d0cabaf8d",
-      "name": "On form submission1",
-      "webhookId": "416c3749-5880-45ca-b428-a3d11c8412e4"
-    },
-    {
-      "parameters": {
-        "resource": "video",
-        "modelId": {
-          "__rl": true,
-          "value": "models/veo-2.0-generate-001",
-          "mode": "list",
-          "cachedResultName": "models/veo-2.0-generate-001"
-        },
-        "prompt": "=make video about this image  {{ $json.id }}",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.googleGemini",
-      "typeVersion": 1.1,
-      "position": [
-        240,
-        416
-      ],
-      "id": "61179b63-62b2-4ff0-8873-4ff2e142d658",
-      "name": "Generate a video2",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "QC8KfYPj6fr6hZUm",
-          "name": "Google Gemini(PaLM) Api account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "resource": "image",
-        "modelId": {
-          "__rl": true,
-          "value": "models/gemini-2.0-flash-exp-image-generation",
-          "mode": "list",
-          "cachedResultName": "models/gemini-2.0-flash-exp-image-generation"
-        },
-        "prompt": "={{ $json.Pormpt }}\nanime-style illustration, Japanese animation style,\nclean line art, soft shading,\nlarge expressive eyes,\ncinematic lighting, dreamy atmosphere,\nhigh quality, ultra-detailed, 4k,\nillustrated, 2D animation style, not realistic\n\nNOT 3D, NOT CGI, NOT 3D render,\nno 3D modeling, no depth-heavy lighting,\nno photorealism, no realistic textures,\nno blender style, no unreal engine style",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.googleGemini",
-      "typeVersion": 1.1,
-      "position": [
-        48,
-        416
-      ],
-      "id": "d501e50c-042e-4796-a799-a9adb5fb3c0b",
-      "name": "Generate an image1",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "QC8KfYPj6fr6hZUm",
-          "name": "Google Gemini(PaLM) Api account"
         }
       }
     },
@@ -206,30 +127,14 @@
     },
     {
       "parameters": {
-        "content": "Google AI Studio 결재하면 아래 노드도 만들어보기",
-        "height": 80,
-        "width": 368,
-        "color": 4
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -32,
-        304
-      ],
-      "typeVersion": 1,
-      "id": "f05e4f33-3bc9-4110-a643-2569bd224ef4",
-      "name": "Sticky Note3"
-    },
-    {
-      "parameters": {
         "model": "gemma2:2b",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
       "typeVersion": 1,
       "position": [
-        720,
-        240
+        112,
+        448
       ],
       "id": "783745d6-a06d-4734-892b-6f9704b6433d",
       "name": "Ollama Chat Model",
@@ -247,8 +152,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        736,
-        0
+        112,
+        240
       ],
       "id": "5f43d03e-4529-46be-b86f-6e3b290321b9",
       "name": "AI Agent"
@@ -260,8 +165,8 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.4,
       "position": [
-        528,
-        -16
+        -160,
+        240
       ],
       "id": "9fa92b3b-3fb0-42e4-8ee5-d75e13d0b1be",
       "name": "When chat message received",
@@ -296,9 +201,349 @@
       "typeVersion": 1,
       "id": "a06cacbf-be7d-4bb3-a790-7f320b7bdf87",
       "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "formTitle": "Image Generation",
+        "formDescription": "This form will allow you to generate images",
+        "formFields": {
+          "values": [
+            {
+              "fieldName": "Pormpt",
+              "fieldLabel": "input your image idea",
+              "fieldType": "textarea",
+              "placeholder": "input your image idea",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.4,
+      "position": [
+        -128,
+        1296
+      ],
+      "id": "1d575f89-4b62-4824-ad6b-b2d885369606",
+      "name": "On form submission1",
+      "webhookId": "3f643208-0617-46ce-af90-247ff0ee7611"
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "modelId": {
+          "__rl": true,
+          "value": "models/veo-2.0-generate-001",
+          "mode": "list",
+          "cachedResultName": "models/veo-2.0-generate-001"
+        },
+        "prompt": "=make video about this image  {{ $json.id }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        256,
+        1296
+      ],
+      "id": "1c8de995-d0ff-4b02-b359-b9d881f8a0a4",
+      "name": "Generate a video2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "QC8KfYPj6fr6hZUm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.0-flash-exp-image-generation",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.0-flash-exp-image-generation"
+        },
+        "prompt": "={{ $json.Pormpt }}\nanime-style illustration, Japanese animation style,\nclean line art, soft shading,\nlarge expressive eyes,\ncinematic lighting, dreamy atmosphere,\nhigh quality, ultra-detailed, 4k,\nillustrated, 2D animation style, not realistic\n\nNOT 3D, NOT CGI, NOT 3D render,\nno 3D modeling, no depth-heavy lighting,\nno photorealism, no realistic textures,\nno blender style, no unreal engine style",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        64,
+        1296
+      ],
+      "id": "e1d73d94-b118-419e-9d1f-1229b5eca37f",
+      "name": "Generate an image1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "QC8KfYPj6fr6hZUm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "Google AI Studio 결재하면 아래 노드도 만들어보기",
+        "height": 80,
+        "width": 368,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        464,
+        1296
+      ],
+      "typeVersion": 1,
+      "id": "ee6c460c-c494-4522-9969-ad3fea539a17",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -160,
+        704
+      ],
+      "id": "af2c55cb-9b45-475c-9f92-53deba7d888e",
+      "name": "Schedule Trigger",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gemma2:2b",
+          "mode": "list",
+          "cachedResultName": "gemma2:2b"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $json.prompt }}"
+            }
+          ]
+        },
+        "options": {
+          "system": "[System Prompt]\n\nYou are a prompt engineer specializing in text-to-image generation for OpenAI's DALL-E model.\nYour task is to generate detailed, creative image prompts featuring Japanese anime-style young women in various situations.\n\nRules:\n1. Each prompt must be in English\n2. Include specific visual details: clothing, setting, lighting, mood, art style\n3. Vary the scenarios randomly each time\n4. Style should be consistent: anime/illustration style\n5. Keep all content appropriate and wholesome\n6. Output ONLY the prompt text, nothing else — no explanations, no labels\n\nScenario categories to randomly pick from:\n- Daily life (school, café, shopping, cooking)\n- Seasons & nature (cherry blossoms, snow, autumn leaves, beach)\n- Festivals & events (matsuri, New Year, Valentine's Day)\n- Travel & adventure (countryside, ancient temples, mountain hiking)\n- Cozy moments (reading, sleeping, listening to music)\n- Urban life (night city, rainy day, train station)\n- Traditional culture (tea ceremony, kimono, shrine visits)\n\nStyle guidelines:\n- Art style: anime, illustration, manga-style, watercolor, or digital art (vary these)\n- Lighting: golden hour, soft morning light, neon night, candlelight (vary these)\n- Composition: portrait, full body, medium shot (vary these)\n\nGenerate one prompt now.",
+          "temperature": 0.9,
+          "top_p": 0.9,
+          "repeat_penalty": 1.2,
+          "format": "json"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.ollama",
+      "typeVersion": 1,
+      "position": [
+        32,
+        704
+      ],
+      "id": "569a6a18-ce09-4c21-8ac7-e8d9619dd68b",
+      "name": "Message a model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "FhRzGMwpasr3Mg2V",
+          "name": "Ollama account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 80,
+        "width": 1440,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -384,
+        112
+      ],
+      "typeVersion": 1,
+      "id": "04e1b678-44bf-4b7e-8773-5976ff26bb69",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 80,
+        "width": 1760,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -384,
+        576
+      ],
+      "typeVersion": 1,
+      "id": "cc87839f-987d-47ce-b4e3-c9562e5e9f58",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 80,
+        "width": 1776,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -352,
+        1136
+      ],
+      "typeVersion": 1,
+      "id": "c47de66f-159a-495e-9de1-f9848de12fa4",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "prompt": "={{ $json.prompt }}\nanime-style illustration, Japanese animation style,\nclean line art, soft shading,\nlarge expressive eyes,\ncinematic lighting, dreamy atmosphere,\nhigh quality, ultra-detailed, 4k,\nillustrated, 2D animation style, not realistic\n\nNOT 3D, NOT CGI, NOT 3D render,\nno 3D modeling, no depth-heavy lighting,\nno photorealism, no realistic textures,\nno blender style, no unreal engine style",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        1056,
+        704
+      ],
+      "id": "35493249-81c7-4f79-9350-e6c86c1424d9",
+      "name": "Generate an image2",
+      "credentials": {
+        "openAiApi": {
+          "id": "64pR9zIwaxub96pl",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "image prompt generator",
+        "height": 80,
+        "width": 224,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        32,
+        896
+      ],
+      "typeVersion": 1,
+      "id": "039e6f17-28cf-41ac-b60d-62f8277cf645",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "content": "성적, 선정적, 특정 작화, 작가, 인물 등의 표현 필터링",
+        "height": 80,
+        "width": 336,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        544,
+        896
+      ],
+      "typeVersion": 1,
+      "id": "48fbf789-dbb0-4fbe-bb68-47658a4e366c",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Ollama 응답에서 prompt 텍스트 추출\nconst input = $input.all();\nconst content = input[0].json.content;\n\n// 앞뒤 공백 및 줄바꿈 제거\nconst prompt = content.trim();\n\n// 다음 노드에 전달할 형태로 출력\nreturn [{ json: { prompt: prompt } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        352,
+        704
+      ],
+      "id": "a900b9da-6c51-4f7b-8bbb-28957a3cd8ba",
+      "name": "Parsing Prompt"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Ollama 응답에서 prompt 텍스트 추출\nconst input = $input.all();\nconst content = input[0].json.content;\n\n// 앞뒤 공백 및 줄바꿈 제거\nconst prompt = content.trim();\n\n// 다음 노드에 전달할 형태로 출력\nreturn [{ json: { prompt: prompt } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        704
+      ],
+      "id": "1ead54f4-5ff3-403c-8455-a5331b9d2932",
+      "name": "Parsing Prompt2"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gemma2:2b",
+          "mode": "list",
+          "cachedResultName": "gemma2:2b"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Prompt to review:\n{{ $json.prompt }}"
+            }
+          ]
+        },
+        "options": {
+          "system": "You are a content safety filter for DALL-E image generation.\nYour job is to review and fix any prompts that could be rejected.\n\nRules:\n1. If any real person's name appears → replace with a generic description\n   - Example: \"Miyazaki style\" → \"Studio animation style\"\n2. If any sexual or revealing content appears → remove or replace with wholesome alternative\n   - Example: \"sexy dress\" → \"elegant dress\"\n3. If any violence or gore appears → remove or replace\n   - Example: \"blood\" → \"sunset\"\n4. If any specific artist/studio name appears → replace with generic art style\n   - Example: \"Studio Ghibli style\" → \"Japanese animated film style\"\n   - Example: \"Akira Toriyama style\" → \"manga illustration style\"\n5. Do NOT change character descriptions like \"woman\", \"girl\", \"young woman\" etc. Keep them as-is.\n6. If the prompt is already safe → return it as-is, do NOT modify\n\nOutput ONLY the corrected prompt. No explanations, no labels.\n\nPrompt to review:",
+          "temperature": 0
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.ollama",
+      "typeVersion": 1,
+      "position": [
+        544,
+        704
+      ],
+      "id": "88c4b624-b023-48bf-a44e-3eab58d0c5f8",
+      "name": "Message a model_filter",
+      "credentials": {
+        "ollamaApi": {
+          "id": "FhRzGMwpasr3Mg2V",
+          "name": "Ollama account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## TODO\n- 필터링 전후 프롬프트를 비교하는 Code node(개인적으로 뭐가 바뀌는지 궁금해서)\n- 생성된 이미지를 [이미지, 프롬프트] 구조로 저장하는 node",
+        "width": 656,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        912,
+        896
+      ],
+      "typeVersion": 1,
+      "id": "a6370264-5006-46de-a23d-bedf6b535036",
+      "name": "Sticky Note11"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Schedule Trigger": [
+      {
+        "json": {
+          "prompt": "Generate one unique image prompt now. Output ONLY the prompt, nothing else."
+        }
+      }
+    ]
+  },
   "connections": {
     "On form submission": {
       "main": [
@@ -314,6 +559,28 @@
     "Generate an image": {
       "main": [
         []
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "On form submission1": {
@@ -338,22 +605,55 @@
         ]
       ]
     },
-    "Ollama Chat Model": {
-      "ai_languageModel": [
+    "Schedule Trigger": {
+      "main": [
         [
           {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
+            "node": "Message a model",
+            "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "When chat message received": {
+    "Message a model": {
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "Parsing Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parsing Prompt": {
+      "main": [
+        [
+          {
+            "node": "Message a model_filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parsing Prompt2": {
+      "main": [
+        [
+          {
+            "node": "Generate an image2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model_filter": {
+      "main": [
+        [
+          {
+            "node": "Parsing Prompt2",
             "type": "main",
             "index": 0
           }
@@ -366,7 +666,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "d3346cf7-dd13-4c0c-b9d2-ab98ce66d7d3",
+  "versionId": "fb904c3a-b45e-4585-b627-5f6cbf8948c3",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "dcbf05de79cd320873e73cfbd22da1610518929336af02084cb7d8a96f6c351f"
