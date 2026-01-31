@@ -17,6 +17,19 @@
 ↓
 [OpenAI] - Generate an image
 ```
+```
+[Schedule Trigger]
+↓
+[Message a model] - Ollama(gemma2:2b)
+↓
+[Code] - Parsing Prompt
+↓
+[Message a model] - Filtering first Prompt, Ollama(gemma2:2b)
+↓
+[Code] - Parsing Prompt
+↓
+[OpenAI] - Generate an image
+```
 
 ## 참고
 - [무료 AI 이미지 생성 N8n 자동화](https://youtu.be/x2ZCpBv3mK8)
