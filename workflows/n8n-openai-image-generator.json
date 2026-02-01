@@ -84,49 +84,6 @@
     },
     {
       "parameters": {
-        "resource": "video",
-        "modelId": {
-          "__rl": true,
-          "value": "sora-2",
-          "mode": "list",
-          "cachedResultName": "SORA-2"
-        },
-        "prompt": "=A beautiful beautiful woman extort money with a katana",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 2.1,
-      "position": [
-        448,
-        -192
-      ],
-      "id": "cfcbed53-6837-4675-b585-39dcd22302bf",
-      "name": "Generate a video",
-      "credentials": {
-        "openAiApi": {
-          "id": "64pR9zIwaxub96pl",
-          "name": "OpenAi account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "content": "[26.01.28]\n아직 주어진 이미지 기반 영상 생성 노드는 지원되지 않는듯",
-        "height": 80,
-        "width": 368,
-        "color": 4
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        48,
-        -176
-      ],
-      "typeVersion": 1,
-      "id": "e1603cc5-f331-41b7-bdc2-3655aad96b98",
-      "name": "Sticky Note2"
-    },
-    {
-      "parameters": {
         "model": "gemma2:2b",
         "options": {}
       },
@@ -222,8 +179,8 @@
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.4,
       "position": [
-        -128,
-        1296
+        -112,
+        1712
       ],
       "id": "1d575f89-4b62-4824-ad6b-b2d885369606",
       "name": "On form submission1",
@@ -244,8 +201,8 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1.1,
       "position": [
-        256,
-        1296
+        272,
+        1712
       ],
       "id": "1c8de995-d0ff-4b02-b359-b9d881f8a0a4",
       "name": "Generate a video2",
@@ -271,8 +228,8 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1.1,
       "position": [
-        64,
-        1296
+        80,
+        1712
       ],
       "id": "e1d73d94-b118-419e-9d1f-1229b5eca37f",
       "name": "Generate an image1",
@@ -292,8 +249,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        464,
-        1296
+        480,
+        1712
       ],
       "typeVersion": 1,
       "id": "ee6c460c-c494-4522-9969-ad3fea539a17",
@@ -312,8 +269,8 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.3,
       "position": [
-        -160,
-        704
+        -176,
+        896
       ],
       "id": "af2c55cb-9b45-475c-9f92-53deba7d888e",
       "name": "Schedule Trigger",
@@ -345,17 +302,19 @@
       "type": "@n8n/n8n-nodes-langchain.ollama",
       "typeVersion": 1,
       "position": [
-        32,
-        704
+        16,
+        896
       ],
       "id": "569a6a18-ce09-4c21-8ac7-e8d9619dd68b",
       "name": "Message a model",
+      "notesInFlow": true,
       "credentials": {
         "ollamaApi": {
           "id": "FhRzGMwpasr3Mg2V",
           "name": "Ollama account 2"
         }
-      }
+      },
+      "notes": "image prompt generator"
     },
     {
       "parameters": {
@@ -399,7 +358,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         -352,
-        1136
+        1600
       ],
       "typeVersion": 1,
       "id": "c47de66f-159a-495e-9de1-f9848de12fa4",
@@ -409,16 +368,19 @@
       "parameters": {
         "resource": "image",
         "prompt": "={{ $json.prompt }}\nanime-style illustration, Japanese animation style,\nclean line art, soft shading,\nlarge expressive eyes,\ncinematic lighting, dreamy atmosphere,\nhigh quality, ultra-detailed, 4k,\nillustrated, 2D animation style, not realistic\n\nNOT 3D, NOT CGI, NOT 3D render,\nno 3D modeling, no depth-heavy lighting,\nno photorealism, no realistic textures,\nno blender style, no unreal engine style",
-        "options": {}
+        "options": {
+          "returnImageUrls": false
+        }
       },
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.1,
       "position": [
-        1056,
-        704
+        1072,
+        896
       ],
       "id": "35493249-81c7-4f79-9350-e6c86c1424d9",
       "name": "Generate an image2",
+      "alwaysOutputData": false,
       "credentials": {
         "openAiApi": {
           "id": "64pR9zIwaxub96pl",
@@ -428,48 +390,18 @@
     },
     {
       "parameters": {
-        "content": "image prompt generator",
-        "height": 80,
-        "width": 224,
-        "color": 4
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        32,
-        896
-      ],
-      "typeVersion": 1,
-      "id": "039e6f17-28cf-41ac-b60d-62f8277cf645",
-      "name": "Sticky Note9"
-    },
-    {
-      "parameters": {
-        "content": "성적, 선정적, 특정 작화, 작가, 인물 등의 표현 필터링",
-        "height": 80,
-        "width": 336,
-        "color": 4
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        544,
-        896
-      ],
-      "typeVersion": 1,
-      "id": "48fbf789-dbb0-4fbe-bb68-47658a4e366c",
-      "name": "Sticky Note10"
-    },
-    {
-      "parameters": {
         "jsCode": "// Ollama 응답에서 prompt 텍스트 추출\nconst input = $input.all();\nconst content = input[0].json.content;\n\n// 앞뒤 공백 및 줄바꿈 제거\nconst prompt = content.trim();\n\n// 다음 노드에 전달할 형태로 출력\nreturn [{ json: { prompt: prompt } }];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        352,
-        704
+        336,
+        896
       ],
       "id": "a900b9da-6c51-4f7b-8bbb-28957a3cd8ba",
-      "name": "Parsing Prompt"
+      "name": "Parsing Prompt",
+      "notesInFlow": true,
+      "notes": "프롬프트가 제대로 전달되지 않아\nParsing Prompt Code node 추가"
     },
     {
       "parameters": {
@@ -478,11 +410,13 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        880,
-        704
+        864,
+        896
       ],
       "id": "1ead54f4-5ff3-403c-8455-a5331b9d2932",
-      "name": "Parsing Prompt2"
+      "name": "Parsing Prompt2",
+      "notesInFlow": true,
+      "notes": "프롬프트가 제대로 전달되지 않아\nParsing Prompt Code node 추가"
     },
     {
       "parameters": {
@@ -507,32 +441,196 @@
       "type": "@n8n/n8n-nodes-langchain.ollama",
       "typeVersion": 1,
       "position": [
-        544,
-        704
+        528,
+        896
       ],
       "id": "88c4b624-b023-48bf-a44e-3eab58d0c5f8",
       "name": "Message a model_filter",
+      "notesInFlow": true,
       "credentials": {
         "ollamaApi": {
           "id": "FhRzGMwpasr3Mg2V",
           "name": "Ollama account 2"
         }
-      }
+      },
+      "notes": "성적, 선정적, 특정 작화, 작가, 인물 등의 표현 필터링"
     },
     {
       "parameters": {
-        "content": "## TODO\n- 필터링 전후 프롬프트를 비교하는 Code node(개인적으로 뭐가 바뀌는지 궁금해서)\n- 생성된 이미지를 [이미지, 프롬프트] 구조로 저장하는 node",
+        "content": "## TODO\n- 이미지 생성이 안 될 경우 다시 생성 요청을 보내기(첫 번째는 동일한 내용으로 재요청, 그래도 안 되면 프롬프트를 바꿔서 재요청)",
         "width": 656,
         "color": 3
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        912,
-        896
+        -400,
+        688
       ],
       "typeVersion": 1,
       "id": "a6370264-5006-46de-a23d-bedf6b535036",
       "name": "Sticky Note11"
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {
+          "keepSource": "binary"
+        }
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        272,
+        -64
+      ],
+      "id": "7fbd159a-1bde-47cb-bbb1-596c937d52e4",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "C:/Users/terious/Desktop/n8n_images_video/image/save_test2.png",
+        "dataPropertyName": "=data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        -64
+      ],
+      "id": "251981b5-0fbe-48ce-88dc-dbce52903ede",
+      "name": "Read/Write Files from Disk"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 80,
+        "width": 1776,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -352,
+        1872
+      ],
+      "typeVersion": 1,
+      "id": "d5ca90c2-598f-44e0-8430-f2d27ca13227",
+      "name": "Sticky Note12"
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "modelId": {
+          "__rl": true,
+          "value": "sora-2",
+          "mode": "list",
+          "cachedResultName": "SORA-2"
+        },
+        "prompt": "=A beautiful beautiful woman extort money with a katana",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        -112,
+        2000
+      ],
+      "id": "c725f093-b253-4381-b40e-f8f728daf33d",
+      "name": "Generate a video",
+      "credentials": {
+        "openAiApi": {
+          "id": "64pR9zIwaxub96pl",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "[26.01.28]\n아직 주어진 이미지 기반 영상 생성 노드는 지원되지 않는듯",
+        "height": 80,
+        "width": 368,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        80,
+        2000
+      ],
+      "typeVersion": 1,
+      "id": "a9d2904a-b95f-4f38-b1e2-d57d485bd031",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {
+          "keepSource": "binary"
+        }
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        1296,
+        1024
+      ],
+      "id": "32318970-561e-44b9-82f7-68dc8e59fbcc",
+      "name": "Extract from File1",
+      "notesInFlow": true,
+      "notes": "Binary 데이터 추출이 제대로 안 되는줄 알고 사이에 해당 node를 추가\n근데 없어도 잘 동작해서 빼버렸다."
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "=C:/Users/terious/Desktop/n8n_images_video/image/{{ $('Parsing Prompt2').item.json.prompt.substring(0, 100) }}.png",
+        "dataPropertyName": "=data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        1504,
+        896
+      ],
+      "id": "d8498a6a-11c2-41f1-a9bf-76d693532e38",
+      "name": "Read/Write Files from Disk1",
+      "notesInFlow": true,
+      "notes": "로컬 파일 저장 with 프롬프트(0~100 글자)"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "4f98c20c-22f2-46a8-ba32-9b9a0cf86fa2",
+              "leftValue": "={{ $('Parsing Prompt').item.json.prompt }}",
+              "rightValue": "={{ $('Parsing Prompt2').item.json.prompt }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1824,
+        896
+      ],
+      "id": "ebd63292-10ee-4778-8c6f-c4f7b000ba8f",
+      "name": "If",
+      "notesInFlow": true,
+      "notes": "필터링 전후 프롬프트를 비교하는 Code node(개인적으로 뭐가 바뀌는지 궁금해서)"
     }
   ],
   "pinData": {
@@ -558,7 +656,13 @@
     },
     "Generate an image": {
       "main": [
-        []
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Ollama Chat Model": {
@@ -659,6 +763,44 @@
           }
         ]
       ]
+    },
+    "Generate an image2": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File1": {
+      "main": [
+        []
+      ]
+    },
+    "Read/Write Files from Disk1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -666,7 +808,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "fb904c3a-b45e-4585-b627-5f6cbf8948c3",
+  "versionId": "2a74854e-18a2-476e-8a75-984fb000b827",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "dcbf05de79cd320873e73cfbd22da1610518929336af02084cb7d8a96f6c351f"
