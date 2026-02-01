@@ -33,7 +33,7 @@
 
 ## 참고
 - [무료 AI 이미지 생성 N8n 자동화](https://youtu.be/x2ZCpBv3mK8)
-- [N8N File is not writable Error Solved for "Read/Write Files from Disk" node]([https://youtu.be/x2ZCpBv3mK8](https://youtu.be/i1llSA9G06k?si=ahMiV5gyJWu1BlzC))
+- [N8N File is not writable Error Solved for "Read/Write Files from Disk" node](https://youtu.be/i1llSA9G06k?si=qLLNPqRJ0yXBKa08)
 
 ## TODO
 - [ ] 생성된 이미지를 파일 혹은 Google Drive에 저장
